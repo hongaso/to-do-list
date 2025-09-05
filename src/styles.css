@@ -1,1 +1,145 @@
-/* You can add global styles to this file, and also import other style files */
+/* Reset y base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffffff;
+  color: #1a202c;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Mejora de fuentes */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', sans-serif;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f7fafc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Mejoras de accesibilidad */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid #3182ce;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Selección de texto */
+::selection {
+  background: #bee3f8;
+  color: #1a202c;
+}
+
+::-moz-selection {
+  background: #bee3f8;
+  color: #1a202c;
+}
+
+/* Animaciones globales */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Clases de utilidad globales */
+.text-primary {
+  color: #3182ce;
+}
+
+.text-secondary {
+  color: #718096;
+}
+
+.bg-light {
+  background: #f7fafc;
+}
+
+.shadow-soft {
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-medium {
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Estados de carga */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Responsive base */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Mejora para inputs en móviles */
+@media (max-width: 768px) {
+  input,
+  textarea,
+  select,
+  button {
+    font-size: 16px !important;
+  }
+}
+
+/* Links globales */
+a {
+  color: #3182ce;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #2c5282;
+}
+
+/* Botones base */
+button {
+  font-family: inherit;
+}

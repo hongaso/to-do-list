@@ -1,7 +1,16 @@
-import { platformBrowser } from '@angular/platform-browser';
-import { AppModule } from './app/app-module';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { App } from './app/app';
+import { provideRouter } from '@angular/router';
 
-platformBrowser().bootstrapModule(AppModule, {
-  ngZoneEventCoalescing: true,
-})
-  .catch(err => console.error(err));
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { environment } from './environment/environment';
+import { routes } from './app/app.routes'; // ← si tienes tus rutas en otro archivo
+
+bootstrapApplication(App, {
+  providers: [
+    provideRouter(routes),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
+  ],
+});
