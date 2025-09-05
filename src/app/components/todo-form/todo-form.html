@@ -1,0 +1,67 @@
+<div class="form-container">
+  <div class="form-card">
+    <h2 class="form-title">➕ Crear Nueva Tarea</h2>
+
+    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()" class="todo-form">
+      <!-- Campo Título -->
+      <div class="form-group">
+        <label for="title" class="form-label">Título *</label>
+        <input
+          type="text"
+          id="title"
+          formControlName="title"
+          placeholder="¿Qué necesitas hacer?"
+          class="form-input"
+          [class.error]="title?.invalid && title?.touched"
+        />
+        <div class="error-message" *ngIf="title?.invalid && title?.touched">
+          <span *ngIf="title?.errors?.['required']">El título es requerido</span>
+          <span *ngIf="title?.errors?.['minlength']">Mínimo 3 caracteres</span>
+          <span *ngIf="title?.errors?.['maxlength']">Máximo 100 caracteres</span>
+        </div>
+      </div>
+
+      <!-- Campo Descripción -->
+      <div class="form-group">
+        <label for="description" class="form-label">Descripción</label>
+        <textarea
+          id="description"
+          formControlName="description"
+          placeholder="Detalles adicionales (opcional)"
+          rows="4"
+          class="form-textarea"
+          [class.error]="description?.invalid && description?.touched"
+        ></textarea>
+        <div class="error-message" *ngIf="description?.invalid && description?.touched">
+          <span *ngIf="description?.errors?.['maxlength']">Máximo 500 caracteres</span>
+        </div>
+        <div class="char-count">{{ description?.value?.length || 0 }}/500</div>
+      </div>
+
+      <!-- Campo Prioridad -->
+      <div class="form-group">
+        <label for="priority" class="form-label">Prioridad *</label>
+        <select id="priority" formControlName="priority" class="form-select">
+          <option value="low">🟢 Baja</option>
+          <option value="medium">🟡 Media</option>
+          <option value="high">🔴 Alta</option>
+        </select>
+      </div>
+
+      <!-- Botones de acción -->
+      <div class="form-actions">
+        <button
+          type="button"
+          (click)="onCancel()"
+          class="btn btn-secondary"
+          [disabled]="isSubmitting"
+        >
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-primary" [disabled]="todoForm.invalid || isSubmitting">
+          {{ isSubmitting ? 'Creando...' : 'Crear Tarea' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
